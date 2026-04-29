@@ -3,278 +3,118 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Google Ads Plan — Compliance Campaign</title>
+<title>Google Ads Compliance Plan — Nerdware</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+  :root {
+    --navy: #1A3557;
+    --teal: #1B6B8A;
+    --teal-light: #E1F5EE;
+    --teal-mid: #0F6E56;
+    --teal-dark: #085041;
+    --blue-light: #E6F1FB;
+    --blue-mid: #185FA5;
+    --purple-light: #EEEDFE;
+    --purple-mid: #534AB7;
+    --silver: #F7F9FB;
+    --border: #E2E8F0;
+    --text: #1A202C;
+    --text-muted: #64748B;
+    --text-hint: #94A3B8;
+    --white: #FFFFFF;
+  }
   body {
-    font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
-    background: #F7F8FA;
-    color: #1A1A1A;
-    font-size: 16px;
+    font-family: 'DM Sans', -apple-system, sans-serif;
+    background: #F8FAFC;
+    color: var(--text);
     line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
   }
+  .page { max-width: 680px; margin: 0 auto; padding: 2.5rem 1.5rem 5rem; }
 
-  .page {
-    max-width: 680px;
-    margin: 0 auto;
-    padding: 2.5rem 1.5rem 4rem;
-  }
+  .hero { margin-bottom: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
+  .tag { display: inline-block; font-size: 11px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--text-hint); margin-bottom: .75rem; }
+  .hero h1 { font-size: 28px; font-weight: 500; color: var(--navy); line-height: 1.25; margin-bottom: .6rem; }
+  .hero p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
 
-  /* HERO */
-  .hero {
-    padding-bottom: 2rem;
-    margin-bottom: 2rem;
-    border-bottom: 1px solid #E4E7EC;
-  }
-  .eyebrow {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-    color: #6B7280;
-    margin-bottom: .65rem;
-  }
-  .hero h1 {
-    font-size: 26px;
-    font-weight: 500;
-    color: #111827;
-    line-height: 1.25;
-    margin-bottom: .5rem;
-  }
-  .hero p {
-    font-size: 14px;
-    color: #6B7280;
-    line-height: 1.65;
-  }
+  .step { margin-bottom: 1.5rem; padding: 1.4rem 1.6rem; background: var(--white); border: 1px solid var(--border); border-radius: 14px; }
+  .step-head { display: flex; align-items: center; gap: .75rem; margin-bottom: 1rem; }
+  .step-num { width: 28px; height: 28px; border-radius: 50%; background: var(--navy); color: #fff; font-size: 12px; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .step h2 { font-size: 16px; font-weight: 500; color: var(--text); }
+  .plain { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin-bottom: .9rem; }
+  .plain:last-child { margin-bottom: 0; }
+  .plain strong { color: var(--text); font-weight: 500; }
+  .divider { height: 1px; background: var(--border); margin: 1rem 0; }
+  .lbl { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: .07em; color: var(--text-hint); margin-bottom: .55rem; }
 
-  /* CARDS */
-  .card {
-    background: #ffffff;
-    border: 1px solid #E4E7EC;
-    border-radius: 14px;
-    padding: 1.4rem 1.6rem;
-    margin-bottom: 1.25rem;
-  }
+  .budget-row { display: flex; justify-content: space-between; align-items: center; padding: .6rem 0; border-bottom: 1px solid var(--border); font-size: 14px; }
+  .budget-row:last-child { border: none; }
+  .budget-row .bn { color: var(--text-muted); }
+  .budget-row .bv { font-weight: 500; color: var(--text); }
+  .total-row { display: flex; justify-content: space-between; align-items: center; padding: .75rem 1rem; background: var(--navy); border-radius: 10px; margin-top: .75rem; font-size: 14px; font-weight: 500; color: #fff; }
 
-  .step-head {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: .9rem;
-  }
-  .num {
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    background: #1A3557;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 11px;
-    font-weight: 500;
-    color: #fff;
-    flex-shrink: 0;
-  }
-  .card h2 {
-    font-size: 15px;
-    font-weight: 500;
-    color: #111827;
-  }
+  .metric-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: .85rem; }
+  .metric { background: var(--silver); border-radius: 10px; padding: .85rem .5rem; text-align: center; }
+  .metric .mv { font-size: 22px; font-weight: 500; color: var(--navy); display: block; }
+  .metric .ml { font-size: 11px; color: var(--text-hint); margin-top: 4px; line-height: 1.35; }
 
-  .prose {
-    font-size: 13.5px;
-    color: #4B5563;
-    line-height: 1.7;
-    margin-bottom: .85rem;
-  }
-  .prose:last-child { margin-bottom: 0; }
-  .prose strong { color: #111827; font-weight: 500; }
+  .proj-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: .85rem; }
+  .proj-card { background: var(--silver); border-radius: 10px; padding: 1rem .75rem; text-align: center; }
+  .proj-card .pv { font-size: 20px; font-weight: 500; color: var(--navy); display: block; }
+  .proj-card .pl { font-size: 11px; color: var(--text-hint); margin-top: 4px; line-height: 1.35; }
 
-  .divider {
-    height: 1px;
-    background: #E4E7EC;
-    margin: 1rem 0;
-  }
+  .conv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: .85rem; }
+  .conv-box { padding: .9rem 1rem; border-radius: 10px; border: 1px solid var(--border); }
+  .conv-box.yes { background: var(--teal-light); border-color: #5DCAA5; }
+  .conv-box.no { background: var(--silver); }
+  .conv-box .ct { font-size: 12px; font-weight: 500; margin-bottom: .4rem; }
+  .conv-box.yes .ct { color: var(--teal-mid); }
+  .conv-box.no .ct { color: var(--text-muted); }
+  .conv-box .ci { font-size: 13px; line-height: 1.6; }
+  .conv-box.yes .ci { color: var(--teal-dark); }
+  .conv-box.no .ci { color: var(--text-muted); }
 
-  .lbl {
-    font-size: 11px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: .06em;
-    color: #9CA3AF;
-    margin-bottom: .5rem;
-  }
-
-  /* BUDGET */
-  .brow {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: .55rem 0;
-    border-bottom: 1px solid #F3F4F6;
-    font-size: 13.5px;
-  }
-  .brow:last-of-type { border-bottom: none; }
-  .brow-name { color: #4B5563; }
-  .brow-val { font-weight: 500; color: #111827; }
-
-  .total-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: .75rem 1rem;
-    background: #F3F4F6;
-    border-radius: 8px;
-    margin-top: .75rem;
-    font-size: 14px;
-    font-weight: 500;
-    color: #111827;
-  }
-
-  /* KEYWORDS */
-  .kw-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: .4rem;
-    margin-top: .6rem;
-  }
-  .kw {
-    font-size: 12px;
-    padding: .35rem .65rem;
-    background: #F9FAFB;
-    border: 1px solid #E4E7EC;
-    border-radius: 7px;
-    color: #4B5563;
-  }
-  .source-note {
-    font-size: 11px;
-    color: #9CA3AF;
-    margin-top: .5rem;
-  }
-
-  /* PILLS */
-  .pills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: .4rem;
-    margin-top: .65rem;
-  }
-  .pill {
-    font-size: 12px;
-    padding: .3rem .7rem;
-    border-radius: 20px;
-    background: #F9FAFB;
-    border: 1px solid #E4E7EC;
-    color: #4B5563;
-  }
-  .pill-g {
-    background: #ECFDF5;
-    border-color: #6EE7B7;
-    color: #065F46;
-  }
-
-  /* TIMELINE */
   .timeline { margin-top: .85rem; }
-  .trow {
-    display: grid;
-    grid-template-columns: 64px 1fr;
-    align-items: start;
-  }
-  .tcol {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-right: 1rem;
-  }
-  .mbadge {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: 9px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: .04em;
-    flex-shrink: 0;
-  }
+  .month-row { display: grid; grid-template-columns: 70px 1fr; }
+  .mcol { display: flex; flex-direction: column; align-items: center; padding-right: 1rem; }
+  .mbadge { width: 54px; height: 54px; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: .04em; flex-shrink: 0; }
   .mbadge span { font-size: 18px; font-weight: 500; line-height: 1.1; }
-  .m1 .mbadge { background: #DBEAFE; color: #1E40AF; }
-  .m2 .mbadge { background: #D1FAE5; color: #065F46; }
-  .m3 .mbadge { background: #EDE9FE; color: #4C1D95; }
-  .mline { width: 1px; background: #E4E7EC; flex: 1; min-height: 12px; }
+  .m1 .mbadge { background: var(--blue-light); color: var(--blue-mid); }
+  .m2 .mbadge { background: var(--teal-light); color: var(--teal-mid); }
+  .m3 .mbadge { background: var(--purple-light); color: var(--purple-mid); }
+  .mline { width: 1px; background: var(--border); flex: 1; min-height: 12px; }
   .mcontent { padding: .3rem 0 1.5rem; }
-  .mtitle { font-size: 13.5px; font-weight: 500; color: #111827; margin-bottom: .4rem; padding-top: .35rem; }
-  .mlist { list-style: none; padding: 0; }
-  .mlist li {
-    font-size: 12.5px;
-    color: #4B5563;
-    padding: .22rem 0 .22rem 1rem;
-    position: relative;
-    line-height: 1.55;
-  }
-  .mlist li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: .6rem;
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background: #D1D5DB;
-  }
+  .mtitle { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: .4rem; padding-top: .45rem; }
+  .mitems { list-style: none; }
+  .mitems li { font-size: 13px; color: var(--text-muted); padding: .2rem 0 .2rem 1rem; position: relative; line-height: 1.55; }
+  .mitems li::before { content: ''; position: absolute; left: 0; top: .6rem; width: 5px; height: 5px; border-radius: 50%; background: #CBD5E0; }
 
-  /* NEEDS GRID */
-  .needs {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: .5rem;
-    margin-top: .75rem;
-  }
-  .need {
-    padding: .75rem .9rem;
-    background: #F9FAFB;
-    border: 1px solid #E4E7EC;
-    border-radius: 9px;
-  }
-  .need-t { font-size: 12.5px; font-weight: 500; color: #111827; margin-bottom: .2rem; }
-  .need-d { font-size: 11.5px; color: #6B7280; line-height: 1.4; }
+  .kw-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .4rem; margin-top: .65rem; }
+  .kw { font-size: 12px; padding: .35rem .65rem; background: var(--silver); border-radius: 8px; color: var(--text-muted); border: 1px solid var(--border); }
 
-  /* TIMELINE WEEKS */
-  .wk-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    padding: .55rem 0;
-    border-bottom: 1px solid #F3F4F6;
-    gap: 1rem;
-  }
-  .wk-row:last-child { border-bottom: none; }
-  .wk-label { font-size: 13.5px; font-weight: 500; color: #111827; white-space: nowrap; }
-  .wk-label.go { color: #047857; }
-  .wk-desc { font-size: 12.5px; color: #6B7280; text-align: right; line-height: 1.45; }
-  .wk-desc.go { color: #047857; font-weight: 500; }
+  .need-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; margin-top: .85rem; }
+  .need-card { padding: .8rem 1rem; background: var(--silver); border-radius: 10px; }
+  .need-card .nt { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: .2rem; }
+  .need-card .nd { font-size: 12px; color: var(--text-muted); line-height: 1.4; }
 
-  /* FOOTER */
-  .footer-note {
-    font-size: 11.5px;
-    color: #9CA3AF;
-    line-height: 1.65;
-    padding-top: 1.5rem;
-    border-top: 1px solid #E4E7EC;
-    margin-top: 2rem;
-  }
+  .launch-row { display: flex; justify-content: space-between; align-items: flex-start; padding: .6rem 0; border-bottom: 1px solid var(--border); font-size: 14px; gap: 1rem; }
+  .launch-row:last-child { border: none; }
+  .lk { font-weight: 500; color: var(--text); min-width: 70px; }
+  .lv { color: var(--text-muted); text-align: right; }
+  .launch-row.live .lv { color: var(--teal-mid); font-weight: 500; }
 
-  /* RESPONSIVE */
-  @media (max-width: 500px) {
-    .kw-grid, .needs { grid-template-columns: 1fr; }
+  .cs-badge { display: inline-block; font-size: 11px; font-weight: 500; padding: .25rem .7rem; border-radius: 20px; background: var(--blue-light); color: var(--blue-mid); margin-bottom: .85rem; }
+
+  .quote-block { border-left: 3px solid var(--teal); padding: .65rem 0 .65rem 1rem; margin: .85rem 0; font-size: 14px; color: var(--text-muted); font-style: italic; line-height: 1.65; }
+  .quote-block strong { font-style: normal; font-weight: 500; color: var(--text-muted); display: block; margin-top: .4rem; font-size: 12px; }
+
+  .footer { font-size: 12px; color: var(--text-hint); line-height: 1.6; padding-top: 1.5rem; border-top: 1px solid var(--border); margin-top: 2.5rem; }
+
+  @media (max-width: 480px) {
+    .metric-grid { grid-template-columns: repeat(2, 1fr); }
+    .conv-grid, .need-grid, .kw-grid { grid-template-columns: 1fr; }
     .hero h1 { font-size: 22px; }
-    .page { padding: 1.5rem 1rem 3rem; }
   }
 </style>
 </head>
@@ -282,117 +122,165 @@
 <div class="page">
 
   <div class="hero">
-    <div class="eyebrow">Google Ads — Compliance Campaign</div>
-    <h1>Here's exactly what we're doing with your money, and why.</h1>
-    <p>No jargon. No assumptions. A clear picture of the plan, what happens each month, and what we need from you to get started.</p>
+    <div class="tag">Google Ads — Compliance Campaign</div>
+    <h1>Here's exactly what we're doing<br>with your money, and why.</h1>
+    <p>No jargon. No assumptions. Real results from campaigns we've run, what to expect from yours, and a clear picture of every step we take together.</p>
   </div>
 
-  <div class="card">
-    <div class="step-head"><div class="num">1</div><h2>What is Google Ads, and why are we using it?</h2></div>
-    <p class="prose">When someone in Gauteng types <strong>"FAIS compliance services"</strong> or <strong>"outsourced compliance officer"</strong> into Google, your business will appear at the top of the results — before they even scroll.</p>
-    <p class="prose">You only pay when someone actually <strong>clicks</strong> your ad. If they see it and don't click, it costs nothing. This is called <strong>pay-per-click advertising</strong> — the most direct way to reach people already looking for exactly what you offer.</p>
+  <!-- STEP 1 -->
+  <div class="step">
+    <div class="step-head"><div class="step-num">1</div><h2>What is Google Ads, and why are we using it?</h2></div>
+    <p class="plain">When someone in Gauteng types <strong>"FAIS compliance services"</strong> or <strong>"outsourced compliance officer"</strong> into Google, your business will appear at the top of their results — before they even scroll. You only pay when someone actually <strong>clicks</strong> your ad. If they see it and don't click, it costs you nothing.</p>
+    <p class="plain">This matters because the people searching these terms aren't browsing casually. They have a problem — a regulatory deadline, a compliance gap, an FSCA requirement they can't ignore — and they are actively looking for someone to solve it. That's exactly the kind of enquiry you want landing in your inbox.</p>
     <div class="divider"></div>
-    <div class="lbl">Searches we're targeting</div>
+    <div class="lbl">The searches we're targeting</div>
     <div class="kw-grid">
       <div class="kw">FICA compliance training</div>
       <div class="kw">FAIS compliance services</div>
       <div class="kw">Outsourced compliance officer</div>
       <div class="kw">Regulatory compliance consulting</div>
     </div>
-    <p class="source-note">Source: Google Keyword Planner, Gauteng, April 2026</p>
+    <p style="font-size:11px;color:var(--text-hint);margin-top:.55rem">Source: Google Keyword Planner, Gauteng, April 2026</p>
   </div>
 
-  <div class="card">
-    <div class="step-head"><div class="num">2</div><h2>Where does your money go each month?</h2></div>
-    <p class="prose">Your monthly investment covers two things: money paid <strong>directly to Google</strong> for your ads, and the fee for the team <strong>managing everything</strong> on your behalf.</p>
-    <div class="brow"><span class="brow-name">Media budget — goes directly to Google</span><span class="brow-val">R7 700</span></div>
-    <div class="brow"><span class="brow-name">Campaign management — strategy, optimisation &amp; reporting</span><span class="brow-val">R8 000</span></div>
+  <!-- STEP 2 -->
+  <div class="step">
+    <div class="step-head"><div class="step-num">2</div><h2>What is a conversion — and why does it matter?</h2></div>
+    <p class="plain">A <strong>conversion</strong> is the moment a visitor does what you want them to do. It's the action that turns a stranger on Google into a real lead for your business. Without tracking conversions, we'd only know how many people clicked the ad — not how many actually contacted you.</p>
+    <p class="plain">Think of it this way: clicks are visitors walking into your shop. Conversions are the ones who actually ask to speak to someone.</p>
+    <div class="divider"></div>
+    <div class="lbl">What counts as a conversion for your campaign</div>
+    <div class="conv-grid">
+      <div class="conv-box yes">
+        <div class="ct">Counts as a conversion</div>
+        <div class="ci">Filling in your contact form<br>Clicking to call from the ad<br>Clicking a "get a quote" button</div>
+      </div>
+      <div class="conv-box no">
+        <div class="ct">Does not count</div>
+        <div class="ci">Just viewing the ad<br>Clicking and leaving immediately<br>Visiting without taking action</div>
+      </div>
+    </div>
+    <p class="plain" style="margin-top:.9rem">We configure conversion tracking before we spend a single rand. Every enquiry gets recorded so we always know which keywords and ads are generating real leads — not just traffic.</p>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="step">
+    <div class="step-head"><div class="step-num">3</div><h2>What have we achieved with this approach before?</h2></div>
+    <div class="cs-badge">Case study — Nerdware Google Ads campaign</div>
+    <p class="plain">We've run this exact approach for clients across different industries in South Africa. Here are the real numbers from one of our Google Ads campaigns, published in <a href="https://www.businesstechafrica.co.za/motoring-2/2024/10/04/revving-up-results-how-digital-marketing-is-driving-success-in-the-automotive-industry/" style="color:var(--teal)">Business Tech Africa</a>:</p>
+    <div class="metric-grid">
+      <div class="metric"><span class="mv">R7.61</span><div class="ml">Cost per click — well below industry average</div></div>
+      <div class="metric"><span class="mv">12.06%</span><div class="ml">Click-through rate — double the benchmark</div></div>
+      <div class="metric"><span class="mv">2.68%</span><div class="ml">Conversion rate — clicks that became leads</div></div>
+      <div class="metric"><span class="mv">R283</span><div class="ml">Cost per lead acquired</div></div>
+    </div>
+    <div class="quote-block">"We emphasise thorough keyword research and crafting search ads tailored to various devices and user queries — with headlines focused on brand recognition, unique selling points, and high search-volume terms."<strong>— Irish Palo, Paid Media Specialist, Nerdware</strong></div>
+    <p class="plain">The compliance market is more niche than some industries, which means fewer total searches — but the people searching are far more qualified. A single FSP client secured through this campaign is typically worth multiples of what it costs to acquire them.</p>
+  </div>
+
+  <!-- STEP 4 -->
+  <div class="step">
+    <div class="step-head"><div class="step-num">4</div><h2>What can you realistically expect from your R7 700 budget?</h2></div>
+    <p class="plain">Based on our track record and the search volumes available in Gauteng, here's a conservative monthly projection for your compliance campaign. These are working estimates — not guarantees. Month 1 is about collecting the real data to refine them.</p>
+    <div class="proj-grid">
+      <div class="proj-card"><span class="pv">380–500</span><div class="pl">Estimated monthly clicks from targeted compliance searches</div></div>
+      <div class="proj-card"><span class="pv">8–15</span><div class="pl">Estimated qualified leads per month at 2–3% conversion rate</div></div>
+      <div class="proj-card"><span class="pv">R500–R700</span><div class="pl">Estimated cost per lead before optimisation</div></div>
+    </div>
+    <p class="plain" style="margin-top:.9rem">By Month 2, as we cut waste and double down on what's working, cost per lead typically improves by 20–35%. By Month 3, you'll have a real benchmark — and we'll have a clear recommendation on whether increasing budget makes financial sense.</p>
+    <div class="divider"></div>
+    <p class="plain"><strong>What makes compliance different:</strong> Search volume is lower than categories like insurance or accounting, but intent is extremely high. Someone searching "outsourced compliance officer" is almost certainly an FSP decision-maker with an immediate need — not a student, not a job-seeker. That is the audience your ads will reach.</p>
+  </div>
+
+  <!-- STEP 5 -->
+  <div class="step">
+    <div class="step-head"><div class="step-num">5</div><h2>Where does your money go each month?</h2></div>
+    <p class="plain">Your monthly investment covers two things: the amount paid directly to Google, and the fee for the team managing everything.</p>
+    <div class="budget-row"><span class="bn">Media budget — paid directly to Google Ads</span><span class="bv">R7 700</span></div>
+    <div class="budget-row"><span class="bn">Campaign management — strategy, optimisation & reporting</span><span class="bv">R8 000</span></div>
     <div class="total-row"><span>Total monthly investment</span><span>R15 700</span></div>
     <div class="divider"></div>
-    <p class="prose" style="margin-bottom:0"><strong>What does the management fee cover?</strong> Month 1 is setup-intensive — we build your campaign from scratch, configure tracking, and map all your keywords. From Month 2 onwards, the fee covers weekly performance checks, cutting wasteful clicks, testing your ads, and a monthly report that tells you exactly what's working.</p>
+    <p class="plain" style="margin-bottom:0"><strong>What the management fee covers:</strong> Month 1 is setup-heavy — we build your full campaign from scratch, configure conversion tracking, write all your ads, and upload your negative keyword list. From Month 2, that fee covers weekly performance reviews, removing wasteful search terms, testing ad variants, and your monthly report. Same fee every month — the value increases as the campaign matures.</p>
   </div>
 
-  <div class="card">
-    <div class="step-head"><div class="num">3</div><h2>What happens each month?</h2></div>
-    <p class="prose">Three phases. Each one builds on the last.</p>
+  <!-- STEP 6 -->
+  <div class="step">
+    <div class="step-head"><div class="step-num">6</div><h2>What happens each month?</h2></div>
+    <p class="plain">Three phases, each building on the last.</p>
     <div class="timeline">
-      <div class="trow m1">
-        <div class="tcol"><div class="mbadge"><span>1</span>Month</div><div class="mline"></div></div>
+      <div class="month-row m1">
+        <div class="mcol"><div class="mbadge"><span>1</span>Month</div><div class="mline"></div></div>
         <div class="mcontent">
-          <div class="mtitle">Build and launch</div>
-          <ul class="mlist">
-            <li>Campaign and ad copy built from scratch</li>
-            <li>Tracking configured — so we know which clicks become real enquiries</li>
-            <li>Ads go live in Johannesburg first</li>
-            <li>Data collected: who clicked, what they searched, what it cost</li>
-            <li>Month 1 report: what we found and what we're adjusting</li>
+          <div class="mtitle">Build & launch</div>
+          <ul class="mitems">
+            <li>Set up campaign architecture and write all ad copy</li>
+            <li>Configure conversion tracking — every enquiry is captured from Day 1</li>
+            <li>Launch ads in Johannesburg</li>
+            <li>Collect real data: who clicked, what they searched, what it cost</li>
+            <li>Month 1 report delivered: findings and next adjustments</li>
           </ul>
         </div>
       </div>
-      <div class="trow m2">
-        <div class="tcol"><div class="mbadge"><span>2</span>Month</div><div class="mline"></div></div>
+      <div class="month-row m2">
+        <div class="mcol"><div class="mbadge"><span>2</span>Month</div><div class="mline"></div></div>
         <div class="mcontent">
-          <div class="mtitle">Optimise and expand</div>
-          <ul class="mlist">
-            <li>Ads expanded to the rest of Gauteng</li>
-            <li>Keywords that are wasting money get cut</li>
-            <li>Budget focused on what's actually generating leads</li>
-            <li>Bids adjusted for best time of day and device type</li>
-            <li>Month 2 report: cost per lead, where leads come from, what's improving</li>
+          <div class="mtitle">Optimise & expand</div>
+          <ul class="mitems">
+            <li>Expand ads to the rest of Gauteng</li>
+            <li>Remove keywords spending money without generating leads</li>
+            <li>Increase bids on terms that are converting well</li>
+            <li>Adjust for time of day and device type</li>
+            <li>Month 2 report: cost per lead, what improved, what changes next</li>
           </ul>
         </div>
       </div>
-      <div class="trow m3">
-        <div class="tcol"><div class="mbadge"><span>3</span>Month</div></div>
+      <div class="month-row m3">
+        <div class="mcol"><div class="mbadge"><span>3</span>Month</div></div>
         <div class="mcontent">
-          <div class="mtitle">Review and decide</div>
-          <ul class="mlist">
+          <div class="mtitle">Review & scale</div>
+          <ul class="mitems">
             <li>Full 90-day performance review</li>
-            <li>You'll know exactly what a lead costs and where it comes from</li>
-            <li>We recommend whether to increase budget, hold steady, or expand</li>
-            <li>Every decision based on real data — not guesswork</li>
+            <li>Your exact cost per lead — where every enquiry came from</li>
+            <li>Recommendation: increase budget, hold, or expand to other service lines</li>
+            <li>All decisions based on your real data — not projections</li>
           </ul>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="card">
-    <div class="step-head"><div class="num">4</div><h2>How will you know it's working?</h2></div>
-    <p class="prose">Every month you'll receive a plain-language report answering three questions: <strong>how much did we spend, how many leads did we get, and what did each lead cost?</strong> No spreadsheet to decode — just clear numbers and what we're doing next.</p>
-    <div class="divider"></div>
-    <div class="lbl">What counts as a lead?</div>
-    <div class="pills">
-      <span class="pill pill-g">Someone fills in a contact form</span>
-      <span class="pill pill-g">Someone calls directly from the ad</span>
-      <span class="pill pill-g">Someone clicks a "get a quote" button</span>
-      <span class="pill">All tracked from Day 1</span>
+  <!-- STEP 7 -->
+  <div class="step">
+    <div class="step-head"><div class="step-num">7</div><h2>How will you know it's working?</h2></div>
+    <p class="plain">Every month you'll receive a plain-language report that answers three questions: <strong>how much did we spend, how many leads did we generate, and what did each lead cost?</strong> No spreadsheet to decode — just clear numbers, what changed, and what we're doing next.</p>
+    <p class="plain">You'll also be able to see in real time when someone calls from your ad or fills in your contact form. Nothing disappears into a black box.</p>
+  </div>
+
+  <!-- STEP 8 -->
+  <div class="step">
+    <div class="step-head"><div class="step-num">8</div><h2>What do we need from you before we can start?</h2></div>
+    <p class="plain">None of these are technical — you just need to know the answers.</p>
+    <div class="need-grid">
+      <div class="need-card"><div class="nt">Google Analytics access</div><div class="nd">We request it — you just approve</div></div>
+      <div class="need-card"><div class="nt">Contact number</div><div class="nd">The number clients should call from the ad</div></div>
+      <div class="need-card"><div class="nt">Enquiry email address</div><div class="nd">Where form submissions should land</div></div>
+      <div class="need-card"><div class="nt">Business hours</div><div class="nd">So ads only show when you can respond</div></div>
+      <div class="need-card"><div class="nt">Contact button on website</div><div class="nd">Must be live on your Compliance service page</div></div>
+      <div class="need-card"><div class="nt">Which leads matter most?</div><div class="nd">Calls, forms or quote requests — your call</div></div>
     </div>
   </div>
 
-  <div class="card">
-    <div class="step-head"><div class="num">5</div><h2>What do we need from you before we can start?</h2></div>
-    <p class="prose">Six things. None are technical — you just need to know the answers.</p>
-    <div class="needs">
-      <div class="need"><div class="need-t">Google Analytics access</div><div class="need-d">We'll request it — you just need to approve</div></div>
-      <div class="need"><div class="need-t">Contact number</div><div class="need-d">The number you want clients to call from the ad</div></div>
-      <div class="need"><div class="need-t">Enquiry email address</div><div class="need-d">Where form submissions should land</div></div>
-      <div class="need"><div class="need-t">Business hours</div><div class="need-d">So your ads only show when you're available to respond</div></div>
-      <div class="need"><div class="need-t">Contact button on your website</div><div class="need-d">Needs to be live on your Compliance service page</div></div>
-      <div class="need"><div class="need-t">Which leads matter most?</div><div class="need-d">Calls, forms, or quote requests — your preference</div></div>
-    </div>
+  <!-- STEP 9 -->
+  <div class="step">
+    <div class="step-head"><div class="step-num">9</div><h2>When do we launch?</h2></div>
+    <p class="plain">Once you give us the go-ahead and confirm the items above:</p>
+    <div class="launch-row"><span class="lk">Week 1</span><span class="lv">Access setup, tracking confirmed, your details captured</span></div>
+    <div class="launch-row"><span class="lk">Week 2</span><span class="lv">Campaign built, ads written, keywords mapped and uploaded</span></div>
+    <div class="launch-row live"><span class="lk">Week 3</span><span class="lv">Ads go live — your business appears on Google</span></div>
   </div>
 
-  <div class="card">
-    <div class="step-head"><div class="num">6</div><h2>When do we launch?</h2></div>
-    <p class="prose">Once you give us the green light, here's how the first three weeks look:</p>
-    <div class="wk-row"><span class="wk-label">Week 1</span><span class="wk-desc">Access setup, tracking confirmed, your details captured</span></div>
-    <div class="wk-row"><span class="wk-label">Week 2</span><span class="wk-desc">Campaign built, ads written, keywords mapped</span></div>
-    <div class="wk-row"><span class="wk-label go">Week 3</span><span class="wk-desc go">Ads go live — your business appears on Google</span></div>
-  </div>
-
-  <div class="footer-note">
-    Prepared by Irish, Performance Media Strategist &nbsp;·&nbsp; April 2026 &nbsp;·&nbsp; Prepared for Cuma &nbsp;·&nbsp; Confidential
+  <div class="footer">
+    Prepared by Irish Palo, Performance Media Specialist · Nerdware · April 2026 · Prepared for: Cuma · Confidential
   </div>
 
 </div>
